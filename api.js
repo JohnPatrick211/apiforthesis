@@ -216,7 +216,7 @@ app.post('/TarcelogsHistory',(req,res,next)=>{
     })
 })
 app.post('/Questioner',(req,res,next)=>{
-    let sql = `SELECT * FROM mf_questioner where question_pos = '${req.param("position")}' order by id desc LIMIT 1;`;
+    let sql = `SELECT * FROM mf_questioner where question_pos = '${req.param("position")}' `;
     connection.query(sql, (err,result) =>{
         if(err) throw err;
         console.log(res);
