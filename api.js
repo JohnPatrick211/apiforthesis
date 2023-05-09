@@ -171,7 +171,7 @@ app.post('/Tarcelogs',(req,res,next)=>{
     })
 })
 app.post('/insertvisitor',(req,res,next)=>{
-    let sql = `INSERT INTO acc_user (fname,password,username,phone) VALUES ('${req.body.name}','${req.body.password}','${req.body.usersid}','${req.body.phone}')`;
+    let sql = `INSERT INTO acc_user (fname,password,username,phone,address) VALUES ('${req.body.name}','${req.body.password}','${req.body.usersid}','${req.body.phone}','${req.body.address}')`;
     connection.query(sql, (err,result) =>{
         if(err) throw err;
         console.log(result);
