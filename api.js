@@ -234,7 +234,7 @@ app.get('/Questioner',(req,res,next)=>{
   })
 })
 
-app.get('/getIDs',(req,res,next)=>{
+app.get('/getID',(req,res,next)=>{
   let sql = `SELECT * FROM acc_user order by id desc LIMIT 1;`;
   connection.query(sql, (err,result) =>{
       if(err) throw err;
