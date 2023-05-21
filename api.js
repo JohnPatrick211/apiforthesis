@@ -284,6 +284,16 @@ app.get('/getCampus',(req,res,next)=>{
   })
 })
 
+app.get('/getSchool',(req,res,next)=>{
+  let sql = `SELECT * FROM content_management where content_type = 'School History' order by id desc LIMIT 1;`;
+  connection.query(sql, (err,result) =>{
+      if(err) throw err;
+      console.log(res);
+      res.send(result);
+      
+  })
+})
+
 
 
 app.post("/profile", upload.single("file"), (req, res) => {
