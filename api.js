@@ -254,6 +254,38 @@ app.get('/getTerms',(req,res,next)=>{
   })
 })
 
+app.get('/getAbout',(req,res,next)=>{
+  let sql = `SELECT * FROM content_management where content_type = 'About' order by id desc LIMIT 1;`;
+  connection.query(sql, (err,result) =>{
+      if(err) throw err;
+      console.log(res);
+      res.send(result);
+      
+  })
+})
+
+app.get('/getFAQ',(req,res,next)=>{
+  let sql = `SELECT * FROM content_management where content_type = 'FAQ' order by id desc LIMIT 1;`;
+  connection.query(sql, (err,result) =>{
+      if(err) throw err;
+      console.log(res);
+      res.send(result);
+      
+  })
+})
+
+app.get('/getCampus',(req,res,next)=>{
+  let sql = `SELECT * FROM content_management where content_type = 'Campus Safety' order by id desc LIMIT 1;`;
+  connection.query(sql, (err,result) =>{
+      if(err) throw err;
+      console.log(res);
+      res.send(result);
+      
+  })
+})
+
+
+
 app.post("/profile", upload.single("file"), (req, res) => {
     console.log(req.file);
     res.send("Single FIle upload success");
