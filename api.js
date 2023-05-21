@@ -245,7 +245,7 @@ app.get('/getID',(req,res,next)=>{
 })
 
 app.get('/getTerms',(req,res,next)=>{
-  let sql = `SELECT * FROM content_management where content_type = Privacy order by id desc LIMIT 1;`;
+  let sql = `SELECT * FROM content_management where content_type = 'Privacy' order by id desc LIMIT 1;`;
   connection.query(sql, (err,result) =>{
       if(err) throw err;
       console.log(res);
