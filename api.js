@@ -86,6 +86,35 @@ app.get('/',(req,res,next)=>{
     res.send('Done Connection');
 })
 
+app.get('/getPayment',(req,res,next)=>{
+  let response = fetch("https://api.paymongo.com/v1/sources", {
+  method: "POST",
+  body: JSON.stringify({
+   data:{
+    attributes:{
+      amount: 100,
+      redirect:{
+        success: "https://google.com",
+        failed: "htpps://google.com"
+      },
+      type:"gcash",
+      currency:"PHP"
+      
+    }
+   }
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+    "Accept": 'application/json',
+    "Authorization": 'Basic c2tfdGVzdF9RQ3NHc3h3Z0JBRWZrZ0tYQzE0NkdaeVA6cGtfdGVzdF8yaXd1bzkyeXJYUFVUbXlwZGFCbmphY2E=',
+
+  }
+});
+
+res.send(json_decode(response))
+})
+
+
 app.post('/user',(req,res,next)=>{
     let sql = 'Select * FROM  acc_user';
     connection.query(sql, (err,result) =>{
