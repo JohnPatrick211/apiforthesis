@@ -87,33 +87,52 @@ app.get('/',(req,res,next)=>{
 })
 
 app.get('/getPayment',(req,res,next)=>{
-  let response = fetch("https://api.paymongo.com/v1/sources", {
-  method: "POST",
-  body: JSON.stringify({
-   data:{
-    attributes:{
-      amount: 100,
-      redirect:{
-        success: "https://google.com",
-        failed: "https://google.com"
-      },
-      type:"gcash",
-      currency:"PHP"
+  var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://api.paymongo.com/v1/sources", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Accept', 'application/json');
+    xhr.setRequestHeader('Authorization', 'Basic c2tfdGVzdF9RQ3NHc3h3Z0JBRWZrZ0tYQzE0NkdaeVA6cGtfdGVzdF8yaXd1bzkyeXJYUFVUbXlwZGFCbmphY2E=');
+    xhr.send(JSON.stringify({
+      data:{
+        attributes:{
+          amount: 100,
+          redirect:{
+            success: "https://google.com",
+            failed: "https://google.com"
+          },
+          type:"gcash",
+          currency:"PHP"
+          
+        }
+       }
+    }));
+//   let response = fetch("https://api.paymongo.com/v1/sources", {
+//   method: "POST",
+//   body: JSON.stringify({
+//    data:{
+//     attributes:{
+//       amount: 100,
+//       redirect:{
+//         success: "https://google.com",
+//         failed: "https://google.com"
+//       },
+//       type:"gcash",
+//       currency:"PHP"
       
-    }
-   }
-  }),
-  headers: {
-    "Content-type": "application/json; charset=UTF-8",
-    "Accept": 'application/json',
-    "Authorization": 'Basic c2tfdGVzdF9RQ3NHc3h3Z0JBRWZrZ0tYQzE0NkdaeVA6cGtfdGVzdF8yaXd1bzkyeXJYUFVUbXlwZGFCbmphY2E=',
+//     }
+//    }
+//   }),
+//   headers: {
+//     "Content-type": "application/json; charset=UTF-8",
+//     "Accept": 'application/json',
+//     "Authorization": 'Basic c2tfdGVzdF9RQ3NHc3h3Z0JBRWZrZ0tYQzE0NkdaeVA6cGtfdGVzdF8yaXd1bzkyeXJYUFVUbXlwZGFCbmphY2E=',
 
-  }
-});
+//   }
+// });
 
-res.send(response.json())
-console.log(response.json())
-console.log(json_decode(response))
+res.send(xhr.json())
+console.log(xhr.json())
+console.log(json_decode(xhr))
 })
 
 
