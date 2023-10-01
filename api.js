@@ -95,7 +95,7 @@ app.get('/getPayment',(req,res,next)=>{
       amount: 100,
       redirect:{
         success: "https://google.com",
-        failed: "htpps://google.com"
+        failed: "https://google.com"
       },
       type:"gcash",
       currency:"PHP"
@@ -111,7 +111,9 @@ app.get('/getPayment',(req,res,next)=>{
   }
 });
 
-res.send(json_decode(response))
+res.send(response.json())
+console.log(response.json())
+console.log(json_decode(response))
 })
 
 
